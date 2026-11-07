@@ -135,11 +135,12 @@ html.fs .wheelbox{width:min(80vw,520px,50vh)}
 .coin2.spin{animation:cspin .6s ease-in-out}@keyframes cspin{50%{transform:rotateY(900deg) scale(1.15)}}
 .rps{font-size:64px;min-height:80px;letter-spacing:4px}
 .coinbox{position:relative;width:170px;height:200px;perspective:800px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
-.coin3{width:150px;height:150px;position:relative;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.25,.8,.3,1)}
-.coinbox.toss .coin3{animation:toss .9s cubic-bezier(.3,.7,.4,1)}@keyframes toss{0%{translate:0 0}45%{translate:0 -70px}100%{translate:0 0}}
-.cf{position:absolute;inset:0;backface-visibility:hidden;filter:drop-shadow(0 6px 8px #0007)}.cf.t{transform:rotateY(180deg)}.cf svg{width:100%;height:100%}
+.coin3{width:150px;height:150px;position:relative;transform-style:preserve-3d;}
+.coinbox.toss .coin3{}@keyframes toss{0%{translate:0 0;scale:1}45%{translate:0 -110px;scale:1.25}100%{translate:0 0;scale:1}}
+.cf{position:absolute;inset:0;backface-visibility:hidden;filter:drop-shadow(0 6px 8px #0007)}.cf.t{transform:rotateX(180deg)}.coin3::before{content:'';position:absolute;inset:4px;border-radius:50%;background:#92400e;transform:translateZ(-3px)}.coin3::after{content:'';position:absolute;inset:4px;border-radius:50%;background:#92400e;transform:translateZ(-1.5px)}.cf.h{transform:translateZ(1px)}.cf.t{transform:rotateX(180deg) translateZ(4.5px)}
+.coinbox.won .cf svg{filter:drop-shadow(0 0 18px #00e701)}.coinbox.lost .cf svg{filter:drop-shadow(0 0 18px #ff4d4d)}.cf svg{width:100%;height:100%}
 .cshadow{width:110px;height:16px;border-radius:50%;background:#0007;margin-top:22px}
-.coinbox.toss .cshadow{animation:shad .9s}@keyframes shad{45%{transform:scale(.6);opacity:.5}}
+.coinbox.toss .cshadow{animation:shad 1.1s}@keyframes shad{45%{transform:scale(.5);opacity:.4}}
 .srow.coins span{width:30px;height:30px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;font:900 13px Inter,sans-serif;background:#fcd34d;color:#b45309;box-shadow:inset 0 0 0 3px #b45309;opacity:.5}
 .srow.coins span.t{background:#e2e8f0;color:#475569;box-shadow:inset 0 0 0 3px #475569}.srow.coins span.w{opacity:1}
 .rpsb{display:flex;align-items:center;gap:22px}
@@ -782,6 +783,26 @@ body{background:#1a2c38}
 .case.pick{opacity:1;transform:scale(1.1);box-shadow:inset 0 0 0 3px var(--cc),0 0 24px var(--cc)!important;animation:pop2 .3s}
 .case b{font:900 16px Inter,sans-serif;color:var(--cc)}
 .cchips{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.cchips span{background:#0f212e;border-radius:4px;padding:6px 0;text-align:center;font:800 12px Inter,sans-serif;color:#fff;border-bottom:3px solid var(--cc)}
+.hwrap{display:flex;flex-direction:column;align-items:center;width:100%;min-width:0}.hilo2{display:flex;align-items:center;justify-content:center;gap:26px;margin-top:20px}
+.hside{width:90px;display:flex;justify-content:center}.hlab{font:800 13px Inter,sans-serif;color:#fff;text-align:center;background:#0f212e;border-radius:6px;padding:8px 10px;line-height:1.2}.hlab small{font-weight:600;color:#b1bad3;font-size:10px}
+.hdeck{position:relative;width:70px;height:98px}.hdeck i{position:absolute;inset:0;border-radius:6px;background:#fff;padding:3px}.hdeck i::after{content:'';position:absolute;inset:3px;border-radius:4px;background:linear-gradient(135deg,#2563eb,#1e3a8a)}
+.hdeck i:nth-child(1){transform:translate(-4px,4px)}.hdeck i:nth-child(2){transform:translate(-2px,2px)}
+.hcur .pc.big{width:130px;height:182px}.hcur .pc.big b{font-size:44px}.hcur .pc.big i{font-size:68px}
+.pc.flipin{animation:hflip .4s cubic-bezier(.3,1.3,.5,1)}@keyframes hflip{from{transform:rotateY(90deg) translateX(-40px);opacity:.3}}
+.hcur.lose .pc{box-shadow:0 0 0 4px #ff4d4d,0 0 30px #ff4d4d88;animation:shk .4s}
+.hhist{display:flex;gap:6px;overflow-x:auto;max-width:100%;padding:24px 4px 6px;scrollbar-width:thin;margin-top:16px}
+.hh{display:flex;flex-direction:column;align-items:center;gap:4px;flex:0 0 auto}.hh .pc{margin:0}
+.hh em{font:800 10px Inter,sans-serif;font-style:normal;padding:2px 6px;border-radius:4px;background:#2f4553;color:#fff;white-space:nowrap}
+.hh.w em{background:#00e701;color:#05080a}.hh.l em{background:#ff4d4d}.hh.s em{background:#2f4553;color:#b1bad3}
+.hbtns2{display:flex;flex-direction:column;gap:8px}
+.hbtn{display:flex;align-items:center;gap:12px;border:none;border-radius:6px;padding:10px 12px;background:#2f4553;color:#fff;text-align:left;transition:background .15s,transform .12s}
+.hbtn:hover:not(:disabled){background:#557086}.hbtn:active:not(:disabled){transform:scale(.98)}.hbtn:disabled{opacity:.5}
+.hbtn .ar{font-style:normal;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex:0 0 auto}
+.hbtn.hi .ar{background:#00e701;color:#05080a}.hbtn.lo .ar{background:#ff4d4d;color:#fff}
+.hbtn b{display:block;font:700 14px Inter,sans-serif}.hbtn small{font:600 12px Inter,sans-serif;color:#b1bad3}
+.hsk{justify-content:center;height:38px}
+.automode>.hbtns2{display:none}
+@media(max-width:640px){.hilo2{gap:10px}.hside{display:none}.hcur .pc.big{width:104px;height:146px}}
 </style>
 </head>
 <body>
@@ -1849,7 +1870,7 @@ const sleepA=ms=>new Promise(r=>setTimeout(r,ms));
 function addAuto(run,opt){opt=opt||{};
   const pn=$('gpanel');const top=document.createElement('div');top.innerHTML=`<div class="seg mtabs" id="amode"><button class="on" data-v="m">Manuale</button><button data-v="a">Auto</button></div>`;pn.prepend(top.firstChild);
   const box=document.createElement('div');box.className='autobox';box.hidden=true;
-  box.innerHTML=`<div class="fld"><label>Numero di giocate <span>0 = infinite</span></label><div class="inrow"><input id="an" type="number" min="0" value="${ls.get('rm_an',10)}"></div></div>
+  box.innerHTML=`<div class="fld"><label>Numero di giocate <span>0 = infinite</span></label><div class="inrow"><input id="an" type="number" min="0" value="${ls.get('rm_an2',0)}"></div></div>
    ${opt.steps?`<div class="fld"><label>${opt.steps}</label><div class="inrow"><input id="ask" type="number" min="1" value="${ls.get('rm_ask_'+curView,opt.def||3)}"></div></div>`:''}
    <div class="arow"><div class="fld"><label>Stop se vinci €</label><div class="inrow"><input id="awin" type="number" min="0" value="0"></div></div><div class="fld"><label>Stop se perdi €</label><div class="inrow"><input id="alos" type="number" min="0" value="0"></div></div></div>
    <button class="gbtn" id="ago">Avvia auto</button>`;
@@ -1858,10 +1879,10 @@ function addAuto(run,opt){opt=opt||{};
   $('ago').onclick=async()=>{
     if($('ago').dataset.run){autoTok++;return}
     const tok=++autoTok,n=Math.max(0,Math.floor(+$('an').value||0)),stW=+$('awin').value||0,stL=+$('alos').value||0,steps=opt.steps?Math.max(1,Math.floor(+$('ask').value||1)):0,start=balance;
-    ls.set('rm_an',n);if(opt.steps)ls.set('rm_ask_'+curView,steps);
+    ls.set('rm_an2',n);if(opt.steps)ls.set('rm_ask_'+curView,steps);
     const b=$('ago');b.dataset.run=1;b.textContent='Ferma auto';b.classList.add('cash');let c=0;
     while(tok===autoTok&&curView&&(!n||c<n)){
-      const ok=await run(steps);if(ok===false||tok!==autoTok)break;c++;
+      const ok=await run(steps);if(ok===false||tok!==autoTok)break;c++;if(document.body.contains(b))b.textContent=`Ferma auto · ${c}${n?'/'+n:''}`;
       const d=balance-start;if((stW&&d>=stW)||(stL&&-d>=stL))break;await sleepA(220)}
     if(document.body.contains(b)){delete b.dataset.run;b.textContent='Avvia auto';b.classList.remove('cash')}
     if(tok===autoTok)autoTok++;
@@ -2154,9 +2175,9 @@ function streakGame(kind){
     $(kind+'go').style.display=st.on?'none':'';document.querySelectorAll(`#${kind}o button`).forEach(b=>b.disabled=!st.on)}
   document.querySelectorAll(`#${kind}o button`).forEach(b=>b.onclick=()=>{if(!st.on)return;const g=b.dataset.v;
     if(kind==='flip'){const r=RNG()<.5?'h':'t';const el=$('flips');document.querySelectorAll('#flipo button').forEach(x=>x.disabled=true);
-      crot+=1440;const want=r==='h'?0:180;crot+=((want-crot)%360+360)%360;el.style.transform=`rotateY(${crot}deg)`;el.parentNode.classList.remove('toss');void el.offsetWidth;el.parentNode.classList.add('toss');SFX.whoosh();
-      setTimeout(()=>{const ok=r===g;$('flipr').insertAdjacentHTML('beforeend',`<span class="${ok?'w':''} ${r}">${r==='h'?'T':'C'}</span>`);
-        if(ok){st.k++;st.m*=1.98;$('flipm').textContent='Giusto!';SFX.coin()}else{$('flipm').textContent='Sbagliato!';st.on=false;settle(st.bet,0,'Flip')}draw()},900)}
+      const from=crot;crot+=1800;const want=r==='h'?0:180;crot+=((want-crot)%360+360)%360;const mid=from+(crot-from)*.55;el.animate([{transform:`translateY(0) scale(1) rotateX(${from}deg)`,easing:'cubic-bezier(.25,.6,.45,1)'},{offset:.45,transform:`translateY(-110px) scale(1.25) rotateX(${mid}deg)`,easing:'cubic-bezier(.55,0,.75,.4)'},{transform:`translateY(0) scale(1) rotateX(${crot}deg)`}],{duration:1100,fill:'forwards'});el.style.transform=`rotateX(${crot}deg)`;el.parentNode.classList.remove('toss');void el.offsetWidth;el.parentNode.classList.add('toss');SFX.whoosh();
+      setTimeout(()=>{const ok=r===g;el.parentNode.classList.add(ok?'won':'lost');setTimeout(()=>el.parentNode.classList.remove('won','lost'),700);$('flipr').insertAdjacentHTML('beforeend',`<span class="${ok?'w':''} ${r}">${r==='h'?'T':'C'}</span>`);
+        if(ok){st.k++;st.m*=1.98;$('flipm').textContent='Giusto!';SFX.coin()}else{$('flipm').textContent='Sbagliato!';st.on=false;settle(st.bet,0,'Flip')}draw()},1150)}
     else{const h=['r','p','s'][Math.floor(RNG()*3)];const box=$('rpss');box.querySelector('.me span').textContent=ico[g];box.querySelector('.house span').textContent=ico[h];
       box.classList.remove('win','lose','tie');void box.offsetWidth;box.classList.add(h===g?'tie':beats[g]===h?'win':'lose');
       if(h===g){$('rpsm').textContent='Pareggio: rigioca';SFX.click()}
@@ -2170,21 +2191,28 @@ const gFlip=()=>streakGame('flip'),gRps=()=>streakGame('rps');
 
 /* ---- HILO ---- */
 function gHilo(){
-  let st={on:false};const pHi=r=>(13-r)/13,pLo=r=>(r+1)/13;
-  panel(betField('hb')+`<div class="ginfo"><div><small>MOLTIPLICATORE</small><b id="hx">1.00×</b></div><div><small>CARTE</small><b id="hk">0</b></div></div>
-   <button class="gbtn" id="hgo">Gioca</button><div class="hbtns" id="hbt" style="display:none"><button class="gbtn" id="hhi"></button><button class="gbtn" id="hlo"></button><button class="abtn" id="hsk" style="justify-content:center">Salta carta</button></div>
-   <button class="gbtn cash" id="hc" style="display:none">Ritira</button><div class="gnote">Indovina se la prossima carta sarà più alta o più bassa (o uguale). Asso è la più bassa, Re la più alta.</div>`);
-  stage(`<div class="streak"><div id="hcard"></div><div class="srow cards" id="hrow"></div></div>`);wireBet('hb');
-  function draw(){const c=st.cur;$('hcard').innerHTML=c?cardH(c,false,'big'):cardH(null,true,'big');$('hx').textContent=f2(st.on?st.m:1)+'×';$('hk').textContent=st.on?st.k:0;
-    $('hgo').style.display=st.on?'none':'';$('hbt').style.display=st.on?'':'none';
-    if(c){$('hhi').textContent=`Più alta o uguale · ${f2(EDGE/pHi(c.r))}×`;$('hlo').textContent=`Più bassa o uguale · ${f2(EDGE/pLo(c.r))}×`}
+  let st={on:false};
+  const opt=(r,hi)=>r===0?(hi?{l:'Più alta',p:12/13,t:n=>n>0,a:'▲'}:{l:'Uguale',p:1/13,t:n=>n===0,a:'='}):r===12?(hi?{l:'Uguale',p:1/13,t:n=>n===12,a:'='}:{l:'Più bassa',p:12/13,t:n=>n<12,a:'▼'})
+    :(hi?{l:'Più alta o uguale',p:(13-r)/13,t:n=>n>=r,a:'▲'}:{l:'Più bassa o uguale',p:(r+1)/13,t:n=>n<=r,a:'▼'});
+  panel(betField('hb')+`<div class="ginfo"><div><small>MOLTIPLICATORE</small><b id="hx">1.00×</b></div><div><small>VINCITA ATTUALE</small><b id="hw">€ 0</b></div></div>
+   <button class="gbtn" id="hgo">Gioca</button>
+   <div class="hbtns2" id="hbt"><button class="hbtn hi" id="hhi"><i class="ar">▲</i><span><b></b><small></small></span></button><button class="hbtn lo" id="hlo"><i class="ar">▼</i><span><b></b><small></small></span></button><button class="abtn hsk" id="hsk">Salta carta</button></div>
+   <button class="gbtn cash" id="hc" style="display:none">Ritira</button><div class="gnote">Indovina se la prossima carta sarà più alta o più bassa. L'Asso è la carta più bassa, il Re la più alta. Puoi saltare le carte che non ti piacciono.</div>`);
+  stage(`<div class="hwrap"><div class="hilo2"><div class="hside"><div class="hlab">RE<br><small>più alta</small></div></div><div class="hdeck"><i></i><i></i><i></i></div><div class="hcur" id="hcard"></div><div class="hside"><div class="hlab">ASSO<br><small>più bassa</small></div></div></div><div class="hhist" id="hrow"></div></div>`);wireBet('hb');
+  let lastCard=null;
+  function draw(){const c=st.cur;if(c!==lastCard){$('hcard').innerHTML=cardH(c,false,'big flipin');lastCard=c}
+    $('hx').textContent=f2(st.on?st.m:1)+'×';$('hw').textContent=fmt(st.on?st.bet*st.m:0);
+    $('hgo').style.display=st.on?'none':'';
+    [['hhi',true],['hlo',false]].forEach(([id,hi])=>{const o=opt(c.r,hi),b=$(id);b.disabled=!st.on;b.querySelector('.ar').textContent=o.a;b.querySelector('b').textContent=o.l;b.querySelector('small').textContent=`${(o.p*100).toFixed(2).replace('.',',')}% · ${f2(EDGE/o.p)}×`});
+    $('hsk').disabled=!st.on;
     const cb=$('hc');cb.style.display=st.on&&st.k>0?'':'none';if(st.on&&st.k)cb.textContent='Ritira '+fmt(st.bet*st.m)}
-  function guess(hi){if(!st.on)return;const n=rcard(),c=st.cur,ok=hi?n.r>=c.r:n.r<=c.r;
-    $('hrow').innerHTML+=cardH(n,false,'sm');st.cur=n;SFX.tick();
-    if(ok){st.k++;st.m*=EDGE/(hi?pHi(c.r):pLo(c.r));SFX.coin()}else{st.on=false;settle(st.bet,0,'Hilo')}draw()}
-  $('hgo').onclick=()=>{const b=takeBet(+$('hb').value);if(!b)return;st={on:true,bet:b,k:0,m:1,cur:rcard()};$('hrow').innerHTML=cardH(st.cur,false,'sm');SFX.chip();draw()};
+  function hist(c,tag,cls){$('hrow').insertAdjacentHTML('beforeend',`<div class="hh ${cls||''}">${cardH(c,false,'sm')}<em>${tag}</em></div>`);const r=$('hrow');r.scrollLeft=r.scrollWidth}
+  function guess(hi){if(!st.on)return;const c=st.cur,o=opt(c.r,hi),n=rcard(),ok=o.t(n.r);st.cur=n;SFX.tick();
+    if(ok){st.k++;st.m*=EDGE/o.p;hist(n,`${o.a} ${f2(st.m)}×`,'w');SFX.coin()}else{st.on=false;hist(n,o.a,'l');settle(st.bet,0,'Hilo');draw();const h=$('hcard');h.classList.remove('lose');void h.offsetWidth;h.classList.add('lose');return}
+    draw()}
+  $('hgo').onclick=()=>{const b=takeBet(+$('hb').value);if(!b)return;st={on:true,bet:b,k:0,m:1,cur:rcard()};$('hrow').innerHTML='';hist(st.cur,'Inizio','s');$('hcard').classList.remove('lose');SFX.chip();draw()};
   $('hhi').onclick=()=>guess(true);$('hlo').onclick=()=>guess(false);
-  $('hsk').onclick=()=>{if(!st.on)return;st.cur=rcard();$('hrow').innerHTML+=cardH(st.cur,false,'sm skip');draw()};
+  $('hsk').onclick=()=>{if(!st.on)return;st.cur=rcard();hist(st.cur,'Saltata','s');SFX.click();draw()};
   $('hc').onclick=()=>{if(!st.on||!st.k)return;const ret=Math.floor(st.bet*st.m*100)/100;st.on=false;settle(st.bet,ret,`Hilo ${f2(st.m)}×`);toast('Ritirato '+fmt(ret));draw()};
   st.cur=rcard();draw();gameStop=()=>{if(st.on){if(st.k)$('hc').click();else{refund(st.bet)}}};
 }
@@ -2641,7 +2669,7 @@ const AUTO={
   chicken:()=>addAuto(stepRun('chickengo','chickenb',async()=>$('chickengo').click(),()=>$('chickengo').textContent==='Avanti','chickenc'),{steps:'Corsie da attraversare',def:3}),
   pump:()=>addAuto(stepRun('pumpgo','pumpb',async()=>$('pumpgo').click(),()=>$('pumpgo').textContent==='Pompa','pumpc'),{steps:'Pompate',def:3}),
   tower:()=>addAuto(stepRun('tgo','tb',async()=>{const t=pickRnd('.trow.cur .tt:not(:disabled)');t&&t.click()},()=>!vis('tgo'),'tc'),{steps:'Piani da salire',def:3}),
-  flip:()=>addAuto(stepRun('flipgo','flipb',async()=>{const b=pickRnd('#flipo button:not(:disabled)');b&&b.click();await sleepA(1000)},()=>!vis('flipgo'),'flipc'),{steps:'Lanci',def:2}),
+  flip:()=>addAuto(stepRun('flipgo','flipb',async()=>{const b=pickRnd('#flipo button:not(:disabled)');b&&b.click();await sleepA(1250)},()=>!vis('flipgo'),'flipc'),{steps:'Lanci',def:2}),
   rps:()=>addAuto(stepRun('rpsgo','rpsb',async()=>{const b=pickRnd('#rpso button:not(:disabled)');b&&b.click()},()=>!vis('rpsgo'),'rpsc'),{steps:'Vittorie da fare',def:2}),
   hilo:()=>addAuto(stepRun('hgo','hb',async()=>{const r=RANKS.indexOf(($('hcard').querySelector('b')||{}).textContent);$(r<6?'hhi':'hlo').click()},()=>!vis('hgo'),'hc'),{steps:'Carte da indovinare',def:3}),
   blackjack:()=>addAuto(async()=>{if(!canBet('bjb'))return false;$('bjgo').click();await sleepA(300);let g=0;
